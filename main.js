@@ -17,5 +17,10 @@ async function getHypothetical() {
 
 }
 
-const hypothetical = getHypothetical();
-text.innerHTML = hypothetical;
+document.addEventListener('DOMContentLoaded', async function() {
+  const hypothetical = await getHypothetical();
+  console.log(hypothetical);
+  text.innerHTML = hypothetical;
+});
+
+
