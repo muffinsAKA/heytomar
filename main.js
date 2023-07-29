@@ -12,9 +12,12 @@ async function getHypothetical() {
     });
     const data = await response.json();
     
-    return data.content;
+    return data;
   } catch (error) {
     console.error('Error fetching data:', error);
   }
 
 }
+
+const hypothetical = getHypothetical();
+text.innerHTML = hypothetical;
