@@ -81,8 +81,8 @@ body {
   and (-webkit-min-device-pixel-ratio: 2) { 
     #tomar-text {
 
-      width: 85%;
-      padding: 26px;
+      width: 90%;
+      padding: 20px;
       border-radius: 4px;
       border: solid  aquamarine 1px; 
       font-size: 14px;
@@ -90,5 +90,53 @@ body {
       font-weight: 300;
       color:  aquamarine;
       text-align: center;
+    }
+
+    .headbox {
+      display: flex;
+      flex-direction: row;
+      gap: 40px;
+      margin-bottom: 10px;
+      justify-content: center;
+      transform: scale(0.75);
+    }
+    
+    .picture {
+      
+      padding: 2px;
+      color: aquamarine;
+      font-size: 16px;
+      font-family: 'Fira Code', sans-serif;
+      font-weight: 300;
+    }
+    
+    .img {
+      margin-top: 5px;
+      padding-left: 4px;
+      padding-right: 4px;
+      padding-bottom: 0;
+      padding-top: 4px;
+      border: solid 1px aquamarine;
+    }
+    
+    .die {
+      background-color: rgba(220, 20, 60, 0);
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+      text-transform: uppercase;
+      border: solid 1px aquamarine;
+      font-family: 'Fira Code', sans-serif;
+      font-weight: 300;
+      opacity: 0;
+    }
+    
+    .die:hover {
+      background-color:aquamarine;
+      color: black;
     }
 }
