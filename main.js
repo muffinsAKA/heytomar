@@ -2,7 +2,7 @@ const text = document.getElementById('tomar-text');
 
 async function getHypothetical() {
   try {
-    const apiKey = process.env.API_KEY;
+    const apiKey = window._env_.API_KEY;
     const response = await fetch('https://xvl6g9g9xk.execute-api.us-east-1.amazonaws.com/dev', {
       method: 'GET',
       headers: {
