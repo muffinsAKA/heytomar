@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 });
 
 button.addEventListener('click', async function() {
+  button.style.opacity = 0;
 dialogueBox.textContent = 'INCOMING TRANSMISSION...';
   const text = await getHypothetical();
   dialogueBox.textContent = '';
