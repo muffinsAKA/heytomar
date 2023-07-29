@@ -46,3 +46,4 @@ amplifytools.xcconfig
 **.sample
 #amplify-do-not-edit-end
 public/vite.svg
+vite.config.js

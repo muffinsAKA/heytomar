@@ -1,28 +1,47 @@
 * {
   margin: 0;
+  box-sizing: border-box;
 }
 
 body {
   background-color: black;
+  width: 100%;
+  height: 100%;
 }
 
 .container {
+  height: 100vh; /* sets the height to the full viewport */
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-
-
 }
 #tomar-text {
-  position: absolute;
-  top: 50%;
+
   width: 50%;
   padding: 26px;
   border-radius: 4px;
   border: solid  aquamarine 1px; 
   font-size: 20px;
-  font-family: Fira Code Retina;
+  font-family: 'Fira Code', sans-serif;
+  font-weight: 300;
   color:  aquamarine;
+  text-align: center;
+}
 
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 2) { 
+    #tomar-text {
+
+      width: 85%;
+      padding: 26px;
+      border-radius: 4px;
+      border: solid  aquamarine 1px; 
+      font-size: 14px;
+      font-family: 'Fira Code', sans-serif;
+      font-weight: 300;
+      color:  aquamarine;
+      text-align: center;
+    }
 }
