@@ -1,5 +1,8 @@
-const text = document.getElementById('tomar-text');
+const dialogueBox = document.getElementById('tomar-text');
+const button = document.querySelector('.die');
 
+
+dialogueBox.textContent = 'INCOMING TRANSMISSION...'
 async function getHypothetical() {
   try {
     const response = await fetch('https://xvl6g9g9xk.execute-api.us-east-1.amazonaws.com/dev/hypothetical', {
@@ -17,10 +20,35 @@ async function getHypothetical() {
 
 }
 
+function typeText(text, container) {
+  const typingSpeed = 40;
+  let currentIndex = 0;
+
+  function typeNextLetter() {
+    if (currentIndex < text.length) {
+      container.textContent += text[currentIndex];
+      currentIndex++;
+      setTimeout(typeNextLetter, typingSpeed);
+    } else {
+      button.style.opacity = 1;
+    }
+
+  }
+
+  typeNextLetter();
+}
+
 document.addEventListener('DOMContentLoaded', async function() {
-  const hypothetical = await getHypothetical();
-  console.log(hypothetical);
-  text.innerHTML = hypothetical;
+  const text = await getHypothetical();
+  dialogueBox.textContent = '';
+  typeText(text, dialogueBox )
+});
+
+button.addEventListener('click', async function() {
+dialogueBox.textContent = 'INCOMING TRANSMISSION...';
+  const text = await getHypothetical();
+  dialogueBox.textContent = '';
+  typeText(text, dialogueBox )
 });
 
 
