@@ -1,8 +1,44 @@
 const dialogueBox = document.getElementById('tomar-text');
 const button = document.querySelector('.die');
+let loading = true;
+let timeouts = [];
 
+// Function to stop the animation and clear the pending timeouts
+function stopAnimation() {
+  loading = false;
+  // Clear any pending timeouts
+  timeouts.forEach(timeoutId => clearTimeout(timeoutId));
+  timeouts = [];
+}
 
-dialogueBox.textContent = 'INCOMING TRANSMISSION...'
+function animateLoading() {
+  if (loading === true) {
+    dialogueBox.textContent = 'INCOMING TRANSMISSION';
+    
+    // Clear any previously stored timeouts
+    timeouts.forEach(timeoutId => clearTimeout(timeoutId));
+    timeouts = [];
+
+    // Schedule new timeouts and store their IDs
+    const timeout1 = setTimeout(() => {
+      dialogueBox.textContent = 'INCOMING TRANSMISSION.';
+    }, 500);
+    const timeout2 = setTimeout(() => {
+      dialogueBox.textContent = 'INCOMING TRANSMISSION..';
+    }, 1000);
+    const timeout3 = setTimeout(() => {
+      dialogueBox.textContent = 'INCOMING TRANSMISSION...';
+    }, 1500);
+    const timeout4 = setTimeout(() => {
+      dialogueBox.textContent = 'INCOMING TRANSMISSION';
+      animateLoading();
+    }, 2000);
+
+    // Store the timeout IDs in the array
+    timeouts.push(timeout1, timeout2, timeout3, timeout4);
+  }
+}
+
 async function getHypothetical() {
   try {
     const response = await fetch('https://xvl6g9g9xk.execute-api.us-east-1.amazonaws.com/dev/hypothetical', {
@@ -39,15 +75,21 @@ function typeText(text, container) {
 }
 
 document.addEventListener('DOMContentLoaded', async function() {
+  animateLoading();
   const text = await getHypothetical();
+  loading = false;
+  stopAnimation();
   dialogueBox.textContent = '';
   typeText(text, dialogueBox )
 });
 
 button.addEventListener('click', async function() {
   button.style.opacity = 0;
-dialogueBox.textContent = 'INCOMING TRANSMISSION...';
+  loading = true;
+  animateLoading();
   const text = await getHypothetical();
+  loading = false;
+  stopAnimation();
   dialogueBox.textContent = '';
   typeText(text, dialogueBox )
 });
